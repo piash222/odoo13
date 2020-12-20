@@ -1,4 +1,5 @@
 from odoo import models, fields, _, api
+from odoo.exceptions import ValidationError
 
 
 class SalesOrderInherit(models.Model):
@@ -10,6 +11,12 @@ class HospitalPatient(models.Model):
     _name = 'hospital.patient'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Patient Record'
+
+    @api.constrains('patient_age')
+    def check_age(self):
+        # for rec in self:
+        if self.patient_age <= 5:
+            raise ValidationError(_("the age must be greater than 5"))
 
     @api.depends('patient_age')
     def set_age_group(self):
