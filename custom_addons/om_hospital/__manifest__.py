@@ -8,11 +8,13 @@
     'author': 'Shihab',
     'maintainer': 'Shihab Uddin',
     'website': '',
-    'depends': ['mail'],
+    'depends': ['mail', 'sale'],
     'demo': [],
     'data': [
         'security/ir.model.access.csv',
+        'data/sequence.xml',
         'patient.xml',
+
     ],
     'installable': True,
     'application': True,
