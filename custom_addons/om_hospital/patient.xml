@@ -25,7 +25,7 @@
                 <field name="patient_age"/>
                 <field name="gender"/>
                 <field name="notes"/>
-
+                <field name="age_group"/>
             </tree>
         </field>
     </record>
@@ -75,6 +75,7 @@
                         <group>
                             <field name="patient_age"/>
                             <field name="gender"/>
+                            <field name="age_group"/>
                         </group>
                     </group>
                     <group>
