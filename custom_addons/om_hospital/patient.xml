@@ -102,6 +102,9 @@
                 <separator/>
                 <filter string="Male" name="male" domain="[('gender', '=', 'male')]"/>
                 <filter string="Female" name="female" domain="[('gender', '=', 'fe_male')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Gender" name="gender" context="{'group_by':'gender'}"/>
+                </group>
             </search>
         </field>
 
