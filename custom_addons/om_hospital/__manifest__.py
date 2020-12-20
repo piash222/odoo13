@@ -8,9 +8,10 @@
     'author': 'Shihab',
     'maintainer': 'Shihab Uddin',
     'website': '',
-    'depends': [],
+    'depends': ['mail'],
     'demo': [],
     'data': [
+        'security/ir.model.access.csv',
         'patient.xml',
     ],
     'installable': True,
