@@ -23,6 +23,7 @@
                 <field name="name_seq"/>
                 <field name="patient_name"/>
                 <field name="patient_age"/>
+                <field name="gender"/>
                 <field name="notes"/>
 
             </tree>
@@ -73,6 +74,7 @@
                         </group>
                         <group>
                             <field name="patient_age"/>
+                            <field name="gender"/>
                         </group>
                     </group>
                     <group>
@@ -88,6 +90,7 @@
             </form>
         </field>
     </record>
+<!--    search -->
     <record id="hospital_patient_search" model="ir.ui.view">
         <field name="name">hospital.patient.search</field>
         <field name="model">hospital.patient</field>
@@ -96,6 +99,9 @@
                 <field name="name" filter_domain="['|',('patient_name', 'ilike', self), ('name_seq', 'ilike', self)]"/>
                 <field name="name_seq"/>
                 <field name="patient_name"/>
+                <separator/>
+                <filter string="Male" name="male" domain="[('gender', '=', 'male')]"/>
+                <filter string="Female" name="female" domain="[('gender', '=', 'fe_male')]"/>
             </search>
         </field>
 

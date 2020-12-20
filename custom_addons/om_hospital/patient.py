@@ -13,6 +13,10 @@ class HospitalPatient(models.Model):
     name = fields.Char(string='Test', required=True)
     patient_name = fields.Char(string='Name', required=True)
     patient_age = fields.Integer(string='age')
+    gender = fields.Selection([
+        ('male', 'Male'),
+        ('fe_male', 'Female'),
+    ], default='male', string="Gender")
     notes = fields.Text(string='Notes')
     image = fields.Binary(string='Image')
     name_seq = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
