@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<odoo>
+
+    <!-- tree view of the patient model-->
+     <record id="appointment_tree" model="ir.ui.view">
+        <field name="name">hospital.appointment.tree</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <tree string="Appointments">
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="patient_age"/>
+                <field name="appointment_date"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--form view of the patient model -->
+    <record id="appointment_form" model="ir.ui.view">
+        <field name="name">hospital.appointment.form</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <form string="Appointment">
+                <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                    <group>
+                        <group>
+                            <field name="patient_id"/>
+                        </group>
+                        <group>
+                             <field name="patient_age"/>
+                        </group>
+                    </group>
+
+                    <group>
+                        <field name="appointment_date"/>
+                        <field name="notes"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter"> <!--for chatter purpose(footer) -->
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread" options="{'post_refresh': 'recipients'}"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!--for search purpose(any genre) -->
+    <!--
+    <record id="hospital_patient_search" model="ir.ui.view">
+        <field name="name">hospital.appointment.search</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <search string="Search Patients">
+                <field name="name" filter_domain="['|',('patient_name', 'like', self),('name_seq','like',self)]"/>
+                <field name="name_seq"/>
+                <field name="patient_name"/>
+                <separator/>
+                <filter string="Male" name="male" domain="[('gender','=', 'male')]"/>
+                <filter string="Female" name="female" domain="[('gender','=', 'fe_male')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Gender" name="gender" context="{'group_by':'gender'}"/>
+                </group>
+
+            </search>
+        </field>
+    </record>
+-->
+
+
+    <!--action of the patients menu -->
+    <record id="action_appointment" model="ir.actions.act_window">
+        <field name="name">Appointment</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create Your First Appointment !
+            </p>
+        </field>
+    </record>
+
+    <menuitem id="patient_appointment" name="appointments" parent="hospital_root" action="action_appointment" sequence="2"/>
+</odoo>

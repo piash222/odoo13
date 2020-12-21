@@ -1,23 +1,32 @@
 {
-    'name': 'Hospital management',
-    'version': '13.0.1.0.0',
-    'category': 'Extra tools',
-    'summary': 'Module for managing the Hospitals',
+    'name': "Hospital Management",
+    'version': '12.0.1.0.0',
+    'category': 'Extra Tools',
+    'summary': 'Module fo managing the Hospitals',
     'sequence': '10',
     'license': 'AGPL-3',
-    'author': 'Shihab',
-    'maintainer': 'Shihab Uddin',
-    'website': '',
-    'depends': ['mail', 'sale'],
+    'author': "Smart Technologies (BD) Ltd",
+    'maintainer': 'Odoo Mates',
+    'website': 'odoomates.com',
+    'depends': ['sale'],
     'demo': [],
+    'description': """
+    Description text
+    """,
+    # data files always loaded at installation
     'data': [
         'security/ir.model.access.csv',
         'data/sequence.xml',
+        'data/appointment_sequence.xml',
         'views/patient.xml',
+        'views/appointment.xml',
+    ],
+    # data files containing optionally loaded demonstration data
+    'demo': [
 
     ],
     'installable': True,
     'application': True,
-    'auto_install': False,
+    'auto install': False,
 }
 
