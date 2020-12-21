@@ -13,7 +13,7 @@ class HospitalAppointment(models.Model):
     def create(self, vals):
         if vals.get('name', _('New')) == _('New'):
             vals['name'] = self.env['ir.sequence'].next_by_code('hospital.appointment.sequence') or _('New') # using sequence for creating a seq order
-        result = super(HospitalAppointment, self).create(vals)
+        result = super(HospitalAppointment, self ).create(vals)
         return result
 
     #def get_default_note(self):
@@ -27,7 +27,8 @@ class HospitalAppointment(models.Model):
     patient_id = fields.Many2one('hospital.patient',string='Patient',required=True,default=get_default_note)
     patient_age = fields.Integer('Age',related='patient_id.patient_age')
     notes = fields.Text(string="Registration Note") # using default note
-    appointment_date = fields.Date(string='Date',required=True)
+    appointment_date = fields.Date(string='Date', required=True)
+
 
 
 

@@ -12,6 +12,11 @@ class HospitalPatient(models.Model):
     _description = 'Patient Record'
     _rec_name = 'patient_name'
 
+    def get_appointment_count(self):
+        count = self.env['hospital.appointment'].search_count([('patient_id', "=", self.id)])
+        self.appointment_count = count
+        print(self.appointment_count)
+
     @api.constrains('patient_age')
     def check_age(self):
         for rec in self:
@@ -30,7 +35,7 @@ class HospitalPatient(models.Model):
     def open_patient_appointments(self):
         return {
             'name': _('Appointments'),
-            'domain': [],
+            'domain': [('patient_id', '=', self.id)],
             'view_type': 'form',
             'res_model': 'hospital.appointment',
             'view_id': False,
@@ -43,6 +48,7 @@ class HospitalPatient(models.Model):
     notes = fields.Text(string="Notes")
     image = fields.Binary(string="Image")
     name = fields.Char(string='Test')
+    appointment_count = fields.Integer(string="Appointment", compute="get_appointment_count")
     name_seq = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
                            index=True, default=lambda self: _('New')) # when you create item it preserves the order
     gender = fields.Selection([
