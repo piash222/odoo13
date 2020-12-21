@@ -2,6 +2,15 @@
 
 <odoo>
 
+    <!--this 'record' portion code is using for smart button(type is action) -->
+    <record model="ir.actions.act_window" id="open_patient_appointments">
+        <field name="name">Appointment</field>
+        <field name="res_model">hospital.appointment</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('patient_id','=',active_id)]</field> <!--patient id should be equal to the current id -->
+        <field name="context">{}</field>
+    </record>
+
     <record id="sale_order_inherit" model="ir.ui.view">
         <field name="name">sale.order.inherit</field>
         <field name="model">sale.order</field>
@@ -38,11 +47,18 @@
         <field name="arch" type="xml">
             <form string="Patients">
                 <sheet>
+                        <!--smart button where type is object -->
                         <div class="oe_button_box" name="button_box">
                             <button name="open_patient_appointments"
-                                    type="object" class="oe_start_button" icon="fa-calendar">
+                                    type="object" class="oe_stat_button" icon="fa-calendar">
                                 <field name="appointment_count" string="Appointments" widget="statinfo"/>
                             </button>
+                            <!--smart button where type is a action -->
+                            <button name="%(open_patient_appointments)d"
+                                    type="action" class="oe_stat_button" icon="fa-usd">
+                                <field name="appointment_count" string="Appointments" widget="statinfo"/>
+                            </button>
+
                         </div>
 
                         <div class="oe_title">

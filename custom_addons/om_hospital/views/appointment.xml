@@ -8,6 +8,7 @@
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
             <tree string="Appointments">
+
                 <field name="name"/>
                 <field name="patient_id"/>
                 <field name="patient_age"/>
@@ -22,6 +23,11 @@
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
             <form string="Appointment">
+                <header>
+                    <button name="action_confirm" type="object" string="confirm" states="draft" class="oe_highlight"/> <!--in draft state the 'confirm' button shows -->
+                    <button name="action_done" type="object" states="confirm" string="done" class="oe_highlight"/> <!--in confirm state the 'done' button shows -->
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/> <!--this one is using for widget statusbar(draft,confirm,done etc),and these states shows on statusbar -->
+                </header>
                 <sheet>
                         <div class="oe_title">
                             <h1>

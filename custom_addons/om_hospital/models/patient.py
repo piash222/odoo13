@@ -12,11 +12,6 @@ class HospitalPatient(models.Model):
     _description = 'Patient Record'
     _rec_name = 'patient_name'
 
-    def get_appointment_count(self):
-        count = self.env['hospital.appointment'].search_count([('patient_id', "=", self.id)])
-        self.appointment_count = count
-        print(self.appointment_count)
-
     @api.constrains('patient_age')
     def check_age(self):
         for rec in self:
@@ -35,7 +30,7 @@ class HospitalPatient(models.Model):
     def open_patient_appointments(self):
         return {
             'name': _('Appointments'),
-            'domain': [('patient_id', '=', self.id)],
+            'domain': [('patient_id', '=', self.id)],  # take all appointments(patient id) of a patient
             'view_type': 'form',
             'res_model': 'hospital.appointment',
             'view_id': False,
@@ -43,12 +38,15 @@ class HospitalPatient(models.Model):
             'type': 'ir.actions.act_window',
         }
 
+    def get_appointment_count(self):
+        count = self.env['hospital.appointment'].search_count([('patient_id', '=', self.id)]) # take all appointments of a patient and count it
+        self.appointment_count = count
+
     patient_name = fields.Char(string='Name', required=True,track_visibility='always')
     patient_age = fields.Integer('Age',track_visibility='always') # track visibility is using for when a user change age then it shows in chatter box
     notes = fields.Text(string="Notes")
     image = fields.Binary(string="Image")
     name = fields.Char(string='Test')
-    appointment_count = fields.Integer(string="Appointment", compute="get_appointment_count")
     name_seq = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
                            index=True, default=lambda self: _('New')) # when you create item it preserves the order
     gender = fields.Selection([
@@ -60,6 +58,7 @@ class HospitalPatient(models.Model):
         ('major', 'Major'),
         ('minor','Minor'),
     ], string="Age Group", compute='set_age_group')  # call 'set_age_group' function
+    appointment_count = fields.Integer(string='Appointment', compute='get_appointment_count') # using 'get_appointment_count' method
 
     # when we create an item it maintains a sequence order
     @api.model
