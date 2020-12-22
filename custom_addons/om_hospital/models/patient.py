@@ -73,7 +73,7 @@ class HospitalPatient(models.Model):
     ], string="Age Group", compute='set_age_group')  # call 'set_age_group' function
     appointment_count = fields.Integer(string='Appointment',
                                        compute='get_appointment_count')  # using 'get_appointment_count' method
-
+    active = fields.Boolean("Active", default=True)
     # when we create an item it maintains a sequence order
     @api.model
     def create(self, vals):
