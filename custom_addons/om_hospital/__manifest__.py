@@ -1,6 +1,6 @@
 {
     'name': "Hospital Management",
-    'version': '12.0.1.0.0',
+    'version': '13.0.1.0.0',
     'category': 'Extra Tools',
     'summary': 'Module fo managing the Hospitals',
     'sequence': '10',
@@ -20,6 +20,8 @@
         'data/appointment_sequence.xml',
         'views/patient.xml',
         'views/appointment.xml',
+        'reports/report.xml',
+        'reports/patient_card.xml'
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
