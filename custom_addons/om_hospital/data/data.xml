@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!--this xml file is using for when a item creates then it takes an order -->
+        <!-- Sequences for sale.order -->
+        <record id="patient_xyz" model="hospital.patient">
+            <field name="patient_name">XYZ</field>
+            <field name="patient_age">55</field>
+            <field name="name">132466</field>
+            <field name="gender">fe_male</field>
+            <field name="notes">Happy sad</field>
+        </record>
+
+    </data>
+    <data noupdate="1">
+        <!--this xml file is using for when a item creates then it takes an order -->
+        <!-- Sequences for sale.order -->
+        <record id="appointment_xyz" model="hospital.appointment">
+            <field name="patient_id" ref="patient_xyz"/>
+            <field name="notes">Happyyyyyyyyyyyyyyyyyy</field>
+        </record>
+
+    </data>
+</odoo>

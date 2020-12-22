@@ -18,10 +18,12 @@
         'security/ir.model.access.csv',
         'data/sequence.xml',
         'data/appointment_sequence.xml',
+        'data/data.xml',
         'views/patient.xml',
         'views/appointment.xml',
         'reports/report.xml',
-        'reports/patient_card.xml'
+        'reports/patient_card.xml',
+
     ],
     # data files containing optionally loaded demonstration data
     'demo': [

@@ -35,7 +35,9 @@ class HospitalAppointment(models.Model):
     patient_id = fields.Many2one('hospital.patient',string='Patient',required=True,default=get_default_note)
     patient_age = fields.Integer('Age',related='patient_id.patient_age')
     notes = fields.Text(string="Registration Note") # using default note
-    appointment_date = fields.Date(string='Date',required=True)
+    doctor_note = fields.Text(string="Doctor's Note") # using default note
+    pharmacy_note = fields.Text(string="Pharmacy Note") # using default note
+    appointment_date = fields.Date(string='Date')
 
     state = fields.Selection(selection=[  # declare the the state in status bar
         ('draft', 'Draft'),  # first item is using for database and 2nd item is using for frontend(odoo)

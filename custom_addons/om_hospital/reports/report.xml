@@ -6,6 +6,7 @@
                 model="hospital.patient"
                 string="Patient Card"
                 report_type="qweb-pdf"
+                menu="False"
                 name="om_hospital.report_patient"
                 file="om_hospital.report_patient"
         />
