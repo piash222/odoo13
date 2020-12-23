@@ -20,11 +20,13 @@
         'data/sequence.xml',
         'data/appointment_sequence.xml',
         'data/data.xml',
+        'wizards/create_appointment.xml',
         'views/patient.xml',
         'views/appointment.xml',
         'views/doctor.xml',
         'reports/report.xml',
         'reports/patient_card.xml',
+
 
     ],
     # data files containing optionally loaded demonstration data

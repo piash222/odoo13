@@ -46,6 +46,11 @@
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
             <form string="Patients">
+                <header>
+                    <button name="%(om_hospital.create_appointment_wizard)d" string="Create Appointment" type="action" class="oe_highlight">
+
+                    </button>
+                </header>
                 <sheet>
                         <!--smart button where type is object -->
                         <div class="oe_button_box" name="button_box">
