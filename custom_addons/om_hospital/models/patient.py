@@ -62,6 +62,7 @@ class HospitalPatient(models.Model):
     name = fields.Char(string='Test')
     name_seq = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
                            index=True, default=lambda self: _('New'))  # when you create item it preserves the order
+    doctor = fields.Many2one('hospital.doctor', string="Doctor")
     gender = fields.Selection([
         ('male', 'Male'),
         ('fe_male', 'Female'),

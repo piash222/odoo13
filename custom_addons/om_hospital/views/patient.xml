@@ -73,8 +73,10 @@
                         <group>
                             <field name="patient_name"/>
                             <field name="name"/>
+
                         </group>
                         <group>
+                            <field name="doctor"  options="{'no_create_edit': True, 'no_quick_create': True, 'no_open': True}"/>
                              <field name="patient_age"/>
                              <field name="age_group"/>
                         </group>
