@@ -47,7 +47,8 @@
         <field name="arch" type="xml">
             <form string="Patients">
                 <header>
-                    <button name="%(om_hospital.create_appointment_wizard)d" string="Create Appointment" type="action" class="oe_highlight">
+                    <button name="%(om_hospital.create_appointment_wizard)d" string="Create Appointment" type="action"
+                            context="{'default_patient_id': active_id}" class="oe_highlight">
 
                     </button>
                 </header>
