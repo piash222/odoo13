@@ -38,6 +38,7 @@ class HospitalAppointment(models.Model):
     doctor_note = fields.Text(string="Doctor's Note") # using default note
     pharmacy_note = fields.Text(string="Pharmacy Note") # using default note
     appointment_date = fields.Date(string='Date')
+    appointment_lines = fields.One2many('hospital.appointment.lines', inverse_name='appointment_id', string="appointment_id")
 
     state = fields.Selection(selection=[  # declare the the state in status bar
         ('draft', 'Draft'),  # first item is using for database and 2nd item is using for frontend(odoo)
@@ -46,9 +47,13 @@ class HospitalAppointment(models.Model):
     ], string='Status', readonly=True, default='draft')
 
 
+class HospitalAppointmentLines(models.Model):
+    _name = 'hospital.appointment.lines'
+    _description = 'Appointment_lines'
 
-
-
+    product_id = fields.Many2one('product.product', string="medicine ")
+    product_qty = fields.Integer(string="quantity")
+    appointment_id = fields.Many2one('hospital.appointment', string='Appointment ID')
 
 
 
