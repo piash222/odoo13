@@ -7,6 +7,12 @@ class HospitalDoctor(models.Model):
     _description = "Doctor Record"
     _rec_name = 'name'
 
+    def name_get(self):
+        res = []
+        for field in self:
+            res.append((field.id, '%s ' % (field.name, )))
+        return res
+
     name = fields.Char(string="Name", required=True)
     gender = fields.Selection([
         ('male', 'Male'),
