@@ -24,11 +24,9 @@ class HospitalPatient(models.Model):
     _rec_name = 'patient_name'
 
     def name_get(self):
-        print("hello world")
         res = []
         for field in self:
             res.append((field.id, '%s - %s' % (field.name_seq, field.patient_name)))
-        print(res)
         return res
 
     @api.constrains('patient_age')
