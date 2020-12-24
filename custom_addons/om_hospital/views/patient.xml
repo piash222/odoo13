@@ -48,9 +48,9 @@
             <form string="Patients">
                 <header>
                     <button name="%(om_hospital.create_appointment_wizard)d" string="Create Appointment" type="action"
-                            context="{'default_patient_id': active_id}" class="oe_highlight">
+                            context="{'default_patient_id': active_id}" class="oe_highlight" />
 
-                    </button>
+                    <button name="action_send_card" type="object" string="send by email" class="oe_highlight"/>
                 </header>
                 <sheet>
                         <!--smart button where type is object -->

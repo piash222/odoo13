@@ -60,6 +60,13 @@ class HospitalPatient(models.Model):
             [('patient_id', '=', self.id)])  # take all appointments of a patient and count it
         self.appointment_count = count
 
+    def action_send_card(self):
+        template_id = self.env.ref('om_hospital.patient_card_email_template').id
+        template = self.env['mail.template'].browse(template_id)
+        template.send_mail(self.id, force_send=True)
+
+
+
     @api.onchange('doctor')
     def set_doctor_gender(self):
         for rec in self:
