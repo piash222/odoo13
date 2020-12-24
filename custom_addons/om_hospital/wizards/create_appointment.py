@@ -6,3 +6,13 @@ class CreateAppointment(models.TransientModel):
 
     patient_id = fields.Many2one('hospital.patient', string='Patient')
     appointment_date = fields.Date(string="Appointment date")
+
+    def create_appointment(self):
+        vals = {
+            'patient_id': self.patient_id.id,
+            # Patient_Id is a many2one field so when access patient_ID you will be getting value as a recordset
+            # like hospital.patient(1), to get the ID you gave use record.id
+            #
+            'appointment_date': self.appointment_date
+        }
+        self.env['hospital.appointment'].create(vals)

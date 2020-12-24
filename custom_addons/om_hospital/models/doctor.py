@@ -5,6 +5,7 @@ class HospitalDoctor(models.Model):
     _name = 'hospital.doctor'
     _inherit = {'hospital.patient': 'related_patient_id'}
     _description = "Doctor Record"
+    _rec_name = 'name'
 
     name = fields.Char(string="Name", required=True)
     gender = fields.Selection([

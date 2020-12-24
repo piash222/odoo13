@@ -54,6 +54,11 @@ class HospitalPatient(models.Model):
             [('patient_id', '=', self.id)])  # take all appointments of a patient and count it
         self.appointment_count = count
 
+    @api.onchange('doctor')
+    def set_doctor_gender(self):
+        for rec in self:
+            rec.doctor_gender = rec.doctor.gender
+
     patient_name = fields.Char(string='Name', required=True, track_visibility='always')
     patient_age = fields.Integer('Age',
                                  track_visibility='always')  # track visibility is using for when a user change age then it shows in chatter box
@@ -63,6 +68,11 @@ class HospitalPatient(models.Model):
     name_seq = fields.Char(string='Order Reference', required=True, copy=False, readonly=True,
                            index=True, default=lambda self: _('New'))  # when you create item it preserves the order
     doctor = fields.Many2one('hospital.doctor', string="Doctor")
+
+    doctor_gender = fields.Selection([
+        ('male', 'Male'),
+        ('fe_male', 'Female'),
+    ], default='male', string="Gender")
     gender = fields.Selection([
         ('male', 'Male'),
         ('fe_male', 'Female'),
