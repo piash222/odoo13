@@ -65,8 +65,6 @@ class HospitalPatient(models.Model):
         template = self.env['mail.template'].browse(template_id)
         template.send_mail(self.id, force_send=True)
 
-
-
     @api.onchange('doctor')
     def set_doctor_gender(self):
         for rec in self:
@@ -100,6 +98,7 @@ class HospitalPatient(models.Model):
     appointment_count = fields.Integer(string='Appointment',
                                        compute='get_appointment_count')  # using 'get_appointment_count' method
     active = fields.Boolean("Active", default=True)
+
     # when we create an item it maintains a sequence order
     @api.model
     def create(self, vals):
@@ -119,4 +118,6 @@ class HospitalPatient(models.Model):
         for rec in self:
             rec.patient_name = rec.patient_name_upper.lower() if rec.patient_name else False
 
-
+    def test_crone_job(self):
+        print('testing 1   2   3')
+        # code accordingly to execute the cron

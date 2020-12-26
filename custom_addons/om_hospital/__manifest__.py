@@ -20,6 +20,7 @@
         'data/sequence.xml',
         'data/appointment_sequence.xml',
         'data/data.xml',
+        'data/cron.xml',
         'data/mail_template.xml',
         'wizards/create_appointment.xml',
         'views/patient.xml',
