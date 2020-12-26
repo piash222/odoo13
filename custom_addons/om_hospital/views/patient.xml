@@ -78,6 +78,7 @@
                     <group>
                         <group>
                             <field name="patient_name"/>
+                            <field name="patient_name_upper"/>
                             <field name="name" groups="om_hospital.group_hospital_doctor"/>
 
                         </group>

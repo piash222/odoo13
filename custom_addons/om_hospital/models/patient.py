@@ -107,3 +107,16 @@ class HospitalPatient(models.Model):
             vals['name_seq'] = self.env['ir.sequence'].next_by_code('hospital.patient.sequence') or _('New')
         result = super(HospitalPatient, self).create(vals)
         return result
+
+    patient_name_upper = fields.Char(compute='_compute_upper_name', inverse='_inverse_upper_name')
+
+    @api.depends('patient_name')
+    def _compute_upper_name(self):
+        for rec in self:
+            rec.patient_name_upper = rec.patient_name.upper() if rec.patient_name else False
+
+    def _inverse_upper_name(self):
+        for rec in self:
+            rec.patient_name = rec.patient_name_upper.lower() if rec.patient_name else False
+
+
