@@ -14,4 +14,5 @@ class CreateAppointment(models.TransientModel):
             # like hospital.patient(1), to get the ID you gave use record.id
             'appointment_date': self.appointment_date
         }
+        self.patient_id.message_post(body='Appointment Created Successfully', subject='Appointment creation')
         self.env['hospital.appointment'].create(vals)
