@@ -10,4 +10,14 @@
                 name="om_hospital.report_patient"
                 file="om_hospital.report_patient"
         />
+    <!-- QWeb Reports -->
+    <!-- NAME & FILE_NAME should be the same -->
+            <report
+                id="report_patient_card_xls"
+                model="hospital.patient"
+                report_type="xlsx"
+                string="patient_card_xls"
+                name="om_hospital.report_patient_xls"
+                file="om_hospital.report_patient_xls"
+            />
 </odoo>
