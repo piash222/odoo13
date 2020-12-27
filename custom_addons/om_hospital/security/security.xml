@@ -24,6 +24,19 @@
 <!--        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
     </record>
 
+    <record id="see_his_own_lab" model="ir.rule">
+        <field name="name">See his lab only</field>
+        <field ref="model_hospital_lab" name="model_id"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+        <!-- You can attach this rule to a specific group, Or make it Global -->
+        <field name="groups" eval="[(4, ref('om_hospital.group_hospital_lab'))]"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_unlink" eval="0"/>
+
+    </record>
+
      <record model="ir.rule" id="patient_record_rule">
         <field name="name">See only his patient</field>
         <field name="model_id" ref="model_hospital_patient"/>
