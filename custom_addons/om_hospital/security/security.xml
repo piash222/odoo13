@@ -17,6 +17,7 @@
         <field name="implied_ids" eval="[(4, ref('group_hospital_doctor'))]"/>
     </record>
 
+<!--    haspital lab group-->
     <record id="group_hospital_lab" model="res.groups">
         <field name="name">Lab Assistant</field>
 <!--        adding category to a group-->
@@ -24,6 +25,7 @@
 <!--        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>-->
     </record>
 
+<!--    see his own lab record rules-->
     <record id="see_his_own_lab" model="ir.rule">
         <field name="name">See his lab only</field>
         <field ref="model_hospital_lab" name="model_id"/>
@@ -34,7 +36,28 @@
         <field name="perm_write" eval="1"/>
         <field name="perm_read" eval="1"/>
         <field name="perm_unlink" eval="0"/>
+    </record>
 
+<!--    lab manager group-->
+    <record id="group_hospital_lab_manager" model="res.groups">
+        <field name="name">Lab  Manager</field>
+<!--        adding category to a group-->
+        <field name="category_id" ref="module_category_hospital"/>
+        <field name="implied_ids" eval="[(4, ref('group_hospital_lab'))]"/>
+    </record>
+
+<!--    lab manager record rules-->
+    <record id="see all lab" model="ir.rule">
+        <field name="name">See All lab</field>
+        <field ref="om_hospital.model_hospital_lab" name="model_id"/>
+        <field name="domain_force">[(1, '=', 1)]</field>
+        <field name="perm_write" eval="1"/>
+        <field name="perm_create" eval="1"/>
+        <field name="perm_read" eval="1"/>
+        <field name="perm_unlink" eval="1"/>
+        <!-- You can attach this rule to a specific group, Or make it Global -->
+        <field name="groups" eval="[(4, ref('group_hospital_lab_manager'))]"/>
+        <!--<field name="global" eval="1"/> -->
     </record>
 
      <record model="ir.rule" id="patient_record_rule">
