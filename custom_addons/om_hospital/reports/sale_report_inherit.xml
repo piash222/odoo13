@@ -11,7 +11,7 @@
                 report_type="qweb-pdf"/>
 
         <template id="sale_report_inherit" inherit_id="sale.report_saleorder_document">
-            <xpath expr="//div[@class='row mt32 mb32']" position="after">
+            <xpath expr="//div[@class='row mt32 mb32']" position="replace">
                 <div class="row mt32 mb32" id="test_inherit">
                     <div class="col-auto mw-100 mb-2">
                         <strong>Test Report Customization</strong>
