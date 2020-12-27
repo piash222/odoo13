@@ -27,6 +27,7 @@
         'views/appointment.xml',
         'views/doctor.xml',
         'views/lab.xml',
+        'reports/sale_report_inherit.xml',
         'reports/report.xml',
         'reports/patient_card.xml',
 
