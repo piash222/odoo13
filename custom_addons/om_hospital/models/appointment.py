@@ -42,6 +42,12 @@ class HospitalAppointment(models.Model):
     def get_default_note(self):
         return 1
 
+    @api.onchange('partner_id')
+    def onchange_partner_id(self):
+        for rec in self:
+            return {'domain': {'order_id': [('partner_id', '=', rec.partner_id.id)]}}
+
+
     name = fields.Char(string='Appointment_ID', require=True, copy=False, readonly=True,
                        index=True, default=lambda self: _('New'))
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True, default=get_default_note)
@@ -52,6 +58,14 @@ class HospitalAppointment(models.Model):
     appointment_date = fields.Date(string='Date')
     appointment_lines = fields.One2many('hospital.appointment.lines', inverse_name='appointment_id',
                                         string="appointment_id")
+    partner_id = fields.Many2one(
+        comodel_name='res.partner',
+        string='Customer',
+        required=False)
+    order_id = fields.Many2one(
+        comodel_name='sale.order',
+        string='sale order',
+        required=False)
 
     state = fields.Selection(selection=[  # declare the the state in status bar
         ('draft', 'Draft'),  # first item is using for database and 2nd item is using for frontend(odoo)

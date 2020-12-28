@@ -56,6 +56,9 @@
                     <group>
                         <field name="appointment_date"/>
                         <field name="notes"/>
+                        <field name="partner_id"/>
+                        <field name="order_id"/>
+                        
                     </group>
 
                     <notebook>
