@@ -22,3 +22,6 @@ class CreateAppointment(models.TransientModel):
         for rec in appointments:
             print("appointment name", rec.name)
         print(appointments)
+        return {
+            'type': 'ir.actions.do_nothing'
+        }
