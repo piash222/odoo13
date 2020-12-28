@@ -1,4 +1,5 @@
 from odoo import models, fields, api, _
+import pytz
 
 
 class HospitalAppointment(models.Model):
@@ -33,7 +34,11 @@ class HospitalAppointment(models.Model):
 
     def delete_lines(self):
         for rec in self:
-            print(self)
+            print("time in UTC", rec.appointment_datetime)
+            # user_tz = pytz.timezone(self.env.context.get('tz') or self.env.user.tz)
+            # print('user_tz ', user_tz)
+            # date_today = pytz.utc.localize(rec.appointment_datetime).astimezone(user_tz)
+            # print('time in local timezone..', date_today)
             rec.appointment_lines = [(5, 0, 0)]
 
     # def get_default_note(self):
@@ -47,7 +52,6 @@ class HospitalAppointment(models.Model):
         for rec in self:
             return {'domain': {'order_id': [('partner_id', '=', rec.partner_id.id)]}}
 
-
     name = fields.Char(string='Appointment_ID', require=True, copy=False, readonly=True,
                        index=True, default=lambda self: _('New'))
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True, default=get_default_note)
@@ -56,6 +60,7 @@ class HospitalAppointment(models.Model):
     doctor_note = fields.Text(string="Doctor's Note")  # using default note
     pharmacy_note = fields.Text(string="Pharmacy Note")  # using default note
     appointment_date = fields.Date(string='Date')
+    appointment_datetime = fields.Datetime(string='Date Time')
     appointment_lines = fields.One2many('hospital.appointment.lines', inverse_name='appointment_id',
                                         string="appointment_id")
     partner_id = fields.Many2one(
