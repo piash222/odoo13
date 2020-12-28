@@ -35,8 +35,7 @@
         <field name="arch" type="xml">
             <form string="Appointment">
                 <header>
-                    <button name="action_confirm" type="object" string="confirm" states="draft" class="oe_highlight"/> <!--in draft state the 'confirm' button shows -->
-                    <button name="action_done" type="object" states="confirm" string="done" class="oe_highlight"/> <!--in confirm state the 'done' button shows -->
+                    <button name="delete_lines" type="object" string="delete" class="btn-success"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/> <!--this one is using for widget statusbar(draft,confirm,done etc),and these states shows on statusbar -->
                 </header>
                 <sheet>

@@ -31,6 +31,11 @@ class HospitalAppointment(models.Model):
         print('test write/n/n/n/n/n/n')
         return res
 
+    def delete_lines(self):
+        for rec in self:
+            print(self)
+            rec.appointment_lines = [(5, 0, 0)]
+
     # def get_default_note(self):
     # return "Subscribe Our Youtube channel"
 
