@@ -8,7 +8,7 @@
     'author': "Smart Technologies (BD) Ltd",
     'maintainer': 'Odoo Mates',
     'website': 'odoomates.com',
-    'depends': ['sale'],
+    'depends': ['sale', 'sale_stock'],
     'demo': [],
     'description': """
     Description text

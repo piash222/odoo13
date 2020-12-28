@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+<!--    <data>-->
+<!--        <record model="res.config.settings" id="res_config_settings">-->
+<!--            <field name="group_product_variant" eval="0"/>-->
+<!--        </record>-->
+
+<!--        <function model="res_config_settings" name="execute">-->
+<!--            <value eval="[ref('res_config_settings')]"/>-->
+<!--            <value eval="{}"/>-->
+<!--        </function>-->
+<!--    </data>-->
+
     <data noupdate="1">
         <!--this xml file is using for when a item creates then it takes an order -->
         <!-- Sequences for sale.order -->
