@@ -30,8 +30,7 @@
         'reports/sale_report_inherit.xml',
         'reports/report.xml',
         'reports/patient_card.xml',
-
-
+        'views/template.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [

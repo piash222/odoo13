@@ -94,7 +94,7 @@ class HospitalPatient(models.Model):
     age_group = fields.Selection([
         ('major', 'Major'),
         ('minor', 'Minor'),
-    ], string="Age Group", compute='set_age_group')  # call 'set_age_group' function
+    ], string="Age Group", compute='set_age_group', store=True)  # call 'set_age_group' function
     appointment_count = fields.Integer(string='Appointment',
                                        compute='get_appointment_count')  # using 'get_appointment_count' method
     active = fields.Boolean("Active", default=True)
