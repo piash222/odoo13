@@ -1,5 +1,5 @@
 from odoo import models, fields, api, _
-import pytz
+import pytz, datetime
 
 
 class HospitalAppointment(models.Model):
@@ -18,6 +18,16 @@ class HospitalAppointment(models.Model):
             rec.state = 'done'  # state tuple is defined below the code
 
     # when we create an item it maintains a sequence order
+    @api.model
+    def default_get(self, fields_list):
+        res = super(HospitalAppointment, self).default_get(fields_list)
+        print('test')
+        res['patient_id'] = 1
+        res['appointment_datetime'] = datetime.datetime.now()
+        res['appointment_date'] = datetime.datetime.now()
+
+        return res
+
     @api.model
     def create(self, vals):
         if vals.get('name', _('New')) == _('New'):
@@ -44,9 +54,6 @@ class HospitalAppointment(models.Model):
     # def get_default_note(self):
     # return "Subscribe Our Youtube channel"
 
-    def get_default_note(self):
-        return 1
-
     @api.onchange('partner_id')
     def onchange_partner_id(self):
         for rec in self:
@@ -54,7 +61,7 @@ class HospitalAppointment(models.Model):
 
     name = fields.Char(string='Appointment_ID', require=True, copy=False, readonly=True,
                        index=True, default=lambda self: _('New'))
-    patient_id = fields.Many2one('hospital.patient', string='Patient', required=True, default=get_default_note)
+    patient_id = fields.Many2one('hospital.patient', string='Patient', required=True)
     patient_age = fields.Integer('Age', related='patient_id.patient_age')
     notes = fields.Text(string="Registration Note")  # using default note
     doctor_note = fields.Text(string="Doctor's Note")  # using default note
