@@ -1,1 +1,1 @@
-from . import patient, appointment, doctor, lab
+from . import patient, appointment, doctor, lab, settings
