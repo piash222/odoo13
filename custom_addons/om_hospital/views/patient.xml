@@ -77,6 +77,7 @@
                         </div>
                     <group>
                         <group>
+                            <field name="name_seq" readonly="1"/>
                             <field name="patient_name"/>
                             <field name="patient_name_upper" groups="base.group_no_one"/>
                             <field name="name" groups="om_hospital.group_hospital_doctor"/>
