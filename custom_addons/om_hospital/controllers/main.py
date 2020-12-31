@@ -26,6 +26,16 @@ class Hospital(http.Controller):
                 }
                 return args
 
+    @http.route('/update_patient', type='json', auth='user')
+    def update_patient(self, **rec):
+        if http.request.jsonrequest:
+            if rec['id']:
+                patient = http.request.env['hospital.patient'].sudo().search([('id', "=", [rec['id']])])
+                if patient:
+                    patient.sudo().write(rec)
+                args = {'success': True, 'message': 'Success'}
+        return args
+
     @http.route('/get_patients', type='json', auth='user')
     def get_patient(self):
         print('yes here entered')

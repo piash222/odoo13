@@ -11,12 +11,23 @@
                 <div class="app_settings_block" data-string="Hospital" string="Hospital"
                      data-key="om_hospital" >
                     <h2>Hospital Management</h2>
-                    <div class="row mt16 o_settings_container" >
-                        <div class="o_setting_left_pane">
-                            <label for="note" string="Default Note"/>
-                            <field name="note"/>
+
+                    <group>
+                        <div class="row mt16 o_settings_container" >
+                            <div class="o_setting_left_pane">
+                                <label for="note" string="Default Note"/>
+                                <field name="note"/>
+                            </div>
                         </div>
-                    </div>
+                    </group>
+                    <group>
+                        <div class="row mt16 o_settings_container" >
+                            <div class="o_setting_left_pane">
+                                <label for="note" string="Hospital crm"/>
+                                <field name="module_crm"/>
+                            </div>
+                        </div>
+                    </group>
                 </div>
             </xpath>
         </field>
