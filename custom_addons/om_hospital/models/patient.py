@@ -4,6 +4,8 @@ from odoo import models, fields, _, api
 class ResPartner(models.Model):
     _inherit = 'res.partner'
 
+    company_type = fields.Selection(selection_add=[('om', 'Odoo Mates'), ('odoodev', 'Odoo devs')])
+
     @api.model
     def create(self, vals_list):
         res = super(ResPartner, self).create(vals_list)
