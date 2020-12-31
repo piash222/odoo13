@@ -71,7 +71,7 @@ class HospitalPatient(models.Model):
             rec.doctor_gender = rec.doctor.gender
 
     patient_name = fields.Char(string='Name', required=True, track_visibility='always')
-    patient_age = fields.Integer('Age',
+    patient_age = fields.Integer('Age', group_operator=False,
                                  track_visibility='always')  # track visibility is using for when a user change age then it shows in chatter box
     notes = fields.Text(string="Notes")
     image = fields.Binary(string="Image")
