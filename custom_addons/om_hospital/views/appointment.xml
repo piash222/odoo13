@@ -112,7 +112,7 @@
         <field name="name">hospital.appointment.calendar</field>
         <field name="model">hospital.appointment</field>
         <field name="arch" type="xml">
-            <calendar string="Appointment calendar" date_start="appointment_date" color="patient_id" mode="month">
+            <calendar string="Appointment calendar" date_start="appointment_date" color="patient_id" mode="month" quick_add="False">
 <!--                color: same color based on patient id-->
                 <field name="name"/>
                 <field name="patient_id"/>
