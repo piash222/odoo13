@@ -16,4 +16,9 @@
         <field name="name">Appointment</field>
     </record>
 
+    <record id="sale.menu_sale_quotations" model="ir.ui.menu">
+        <field name="name">New Quotation</field>
+        <field name="sequence">100</field>
+    </record>
+
 </odoo>
