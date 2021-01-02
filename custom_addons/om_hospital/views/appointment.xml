@@ -107,7 +107,19 @@
             </form>
         </field>
     </record>
-
+<!--    calendar view for appointment-->
+    <record id="appointment_calendar" model="ir.ui.view">
+        <field name="name">hospital.appointment.calendar</field>
+        <field name="model">hospital.appointment</field>
+        <field name="arch" type="xml">
+            <calendar string="Appointment calendar" date_start="appointment_date" color="patient_id" mode="month">
+<!--                color: same color based on patient id-->
+                <field name="name"/>
+                <field name="patient_id"/>
+                <field name="patient_age"/>
+            </calendar>
+        </field>
+    </record>
     <!--for search purpose(any genre) -->
     <!--
     <record id="hospital_patient_search" model="ir.ui.view">
@@ -136,7 +148,7 @@
         <field name="name">Appointment</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">hospital.appointment</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,form,calendar</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create Your First Appointment !
