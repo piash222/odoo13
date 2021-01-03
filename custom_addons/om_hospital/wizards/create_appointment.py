@@ -15,7 +15,17 @@ class CreateAppointment(models.TransientModel):
             'appointment_date': self.appointment_date
         }
         self.patient_id.message_post(body='Appointment Created Successfully', subject='Appointment creation')
-        self.env['hospital.appointment'].create(vals)
+        new_appointment = self.env['hospital.appointment'].create(vals)
+        context = dict(self.env.context)
+        context['form_view_initial_mode'] = 'edit'
+        return {
+            'type': 'ir.actions.act_window',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'res_model': 'hospital.appointment',
+            'res_id': new_appointment.id,
+            'context': context
+        }
 
     def get_data(self):
         appointments = self.env['hospital.appointment'].search([('patient_id', '=', 3)])  # domain inside search
