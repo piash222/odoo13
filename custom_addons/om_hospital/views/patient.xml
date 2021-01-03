@@ -119,7 +119,8 @@
 
                         </group>
                         <group>
-                            <field name="doctor"  options="{'no_create_edit': True, 'no_quick_create': True, 'no_open': True}"/>
+                            <field name="doctor"  options="{'no_create_edit': True, 'no_quick_create': True, 'no_open': True}"
+                            attrs="{'invisible': [('gender', '=', 'male')]}"/>
                             <field name="doctor_gender"/>
                              <field name="patient_age"/>
                              <field name="patient_age2" widget="float_toggle" options='{"range": [0,1,2,3,4,5,6,7,8,9]}'/>
@@ -133,7 +134,7 @@
                     <group>
                         <field name="notes"/>
                          <field name="image"/>
-                         <field name="gender"/>
+                         <field name="gender"  />
                     </group>
                 </sheet>
                 <div class="oe_chatter"> <!--for chatter purpose(footer) -->
