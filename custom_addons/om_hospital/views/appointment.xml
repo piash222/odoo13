@@ -25,7 +25,9 @@
         <field name="arch" type="xml">
             <form string="Appointment">
                 <header>
-                    <button name="delete_lines" type="object" string="delete" class="btn-success"/>
+                    <button name="action_confirm" type="object" string="Confirm" class="btn-info" states="draft"/>
+                    <button name="action_done" type="object" string="Done" class="btn-info" states="confirm"/>
+                    <button name="delete_lines" type="object" string="Delete" class="btn-info"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/> <!--this one is using for widget statusbar(draft,confirm,done etc),and these states shows on statusbar -->
                 </header>
                 <sheet>
