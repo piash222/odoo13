@@ -75,6 +75,7 @@ class HospitalPatient(models.Model):
     patient_name = fields.Char(string='Name', required=True, track_visibility='always')
     patient_age = fields.Integer('Age', group_operator=False,
                                  track_visibility='always')  # track visibility is using for when a user change age then it shows in chatter box
+    patient_age2 = fields.Float(string='patient age 2')
     notes = fields.Text(string="Notes")
     image = fields.Binary(string="Image")
     name = fields.Char(string='Test')
