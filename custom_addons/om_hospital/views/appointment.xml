@@ -164,6 +164,16 @@
     </record>
 -->
 
+<!--    <record id="appointment_timeline" model="ir.ui.view">-->
+<!--        <field name="model">hospital.appointment</field>-->
+<!--        <field name="type">timeline</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <timeline date_start="appointment_date" date_stop="appointment_date_end">-->
+<!--                <field name="name"/>-->
+<!--            </timeline>-->
+<!--        </field>-->
+<!--    </record>-->
+
 
     <!--action of the patients menu -->
     <record id="action_appointment" model="ir.actions.act_window">
