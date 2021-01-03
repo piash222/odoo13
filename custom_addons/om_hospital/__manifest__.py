@@ -8,7 +8,7 @@
     'author': "Smart Technologies (BD) Ltd",
     'maintainer': 'Odoo Mates',
     'website': 'odoomates.com',
-    'depends': ['sale', 'sale_stock'],
+    'depends': ['sale', 'sale_stock', 'board'],
     'demo': [],
     'description': """
     Description text
@@ -33,6 +33,7 @@
         'reports/report.xml',
         'reports/patient_card.xml',
         'views/template.xml',
+        'views/dashboard.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [
@@ -42,4 +43,3 @@
     'application': True,
     'auto install': False,
 }
-
