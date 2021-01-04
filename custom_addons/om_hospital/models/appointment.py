@@ -12,6 +12,13 @@ class HospitalAppointment(models.Model):
     def action_confirm(self):  # a button name in xml file file which name is 'action_confirm'
         for rec in self:  # once the button is clicked then the state is change into 'confirm'
             rec.state = 'confirm'
+            return {
+                'effect': {
+                    'fadeout': 'slow',
+                    'message': 'appointment Confirmed',
+                    'type': 'rainbow_man'
+                }
+            }
 
     def action_done(self):
         for rec in self:

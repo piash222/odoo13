@@ -71,6 +71,10 @@
                         </div>
                     </t>
                 </templates>
+                <searchpanel>
+                    <field name="doctor" icon="fa-building"/>
+                    <field name="doctor" icon="fa-tags"/>
+                </searchpanel>
             </kanban>
         </field>
     </record>
