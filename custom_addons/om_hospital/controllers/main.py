@@ -67,3 +67,21 @@ class Hospital(http.Controller):
             'status': 200, 'response': patients, 'messages': 'Done All Patients Returned'
         }
         return data
+    @http.route('/om_hospital/appointments', auth='user', type='json')
+    def appointment_banner(self):
+        return {
+            'html': """
+                <div>
+                <link>
+                <center>
+                <h1> <font color="red">Like and subscribe the channel....</font></h1>
+                </center>
+                <center>
+                <p>
+                <font color='blue'><a href='https://www.youtube.com'>search youtube for videos</a></font>
+                </p>
+                </link>
+                </center>
+                </div>
+            """
+        }
