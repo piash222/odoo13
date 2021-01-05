@@ -89,7 +89,9 @@
                     <button name="%(om_hospital.create_appointment_wizard)d" string="Create Appointment" type="action"
                             context="{'default_patient_id': active_id}" class="oe_highlight" />
                     <button name="print_report" type="object" string="Print report" class="oe_highlight"/>
+                    <button name="print_report_xls" type="object" string="Print report excel" class="oe_highlight"/>
                     <button name="action_send_card" type="object" string="send by email" class="oe_highlight" groups="om_hospital.group_hospital_doctor"/>
+
                 </header>
                 <sheet>
                         <!--smart button where type is object -->

@@ -127,3 +127,6 @@ class HospitalPatient(models.Model):
 
     def print_report(self):
         return self.env.ref('om_hospital.report_patient_card').report_action(self)
+
+    def print_report_xls(self):
+        return self.env.ref('om_hospital.report_patient_card_xls').report_action(self)
