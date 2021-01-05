@@ -100,6 +100,13 @@ class HospitalAppointment(models.Model):
         for rec in self:
             rec.doctor_id.user_id.notify_danger("Appointment")
 
+    def test_recordset(self):
+        for rec in self:
+            print('odoo ORM: Record Set Operation')
+            partners = rec.env['res.partner'].search([])
+            print('partners', partners.mapped('name'))
+            print('sorted  partners', partners.sorted(lambda o: o.create_date))
+            print('filter  partners', partners.filter(lambda o: o.customer))
 
 class HospitalAppointmentLines(models.Model):
     _name = 'hospital.appointment.lines'

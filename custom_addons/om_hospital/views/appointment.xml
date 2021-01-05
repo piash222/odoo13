@@ -30,6 +30,7 @@
                     <button name="action_done" type="object" string="Done" class="btn-info"
                     attrs="{'invisible': [('state', '!=', 'confirm')]}"/>
                     <button name="delete_lines" type="object" string="Delete" class="btn-info"/>
+                    <button name="test_recordset" type="object" string="Record Set  Operation" class="btn-info"/>
                     <field name="state" widget="statusbar" statusbar_visible="draft,confirm,done"/> <!--this one is using for widget statusbar(draft,confirm,done etc),and these states shows on statusbar -->
                 </header>
                 <sheet>
