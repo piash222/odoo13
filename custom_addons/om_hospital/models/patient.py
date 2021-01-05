@@ -18,6 +18,13 @@ class SaleOrderInherit(models.Model):
     _inherit = 'sale.order'
     patient_name = fields.Char(string='Patient Name')
 
+    def action_confirm(self):
+        print("shihab uddin piash")
+        # super(SaleOrderInherit, self).action_confirm()
+        super().action_confirm()
+
+
+
 
 class HospitalPatient(models.Model):
     _name = 'hospital.patient'
