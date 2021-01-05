@@ -72,6 +72,7 @@ class HospitalAppointment(models.Model):
         string='Amount',
         required=False)
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True)
+    doctor_id = fields.Many2one('hospital.doctor', string='Doctor', required=True)
     patient_age = fields.Integer('Age', related='patient_id.patient_age')
     notes = fields.Text(string="Registration Note")  # using default note
     doctor_note = fields.Text(string="Doctor's Note")  # using default note
@@ -94,6 +95,10 @@ class HospitalAppointment(models.Model):
         ('confirm', 'Confirm'),
         ('done', 'Done')
     ], string='Status', readonly=True, default='draft')
+
+    def action_notify(self):
+        for rec in self:
+            rec.doctor_id.user_id.notify_danger("Appointment")
 
 
 class HospitalAppointmentLines(models.Model):

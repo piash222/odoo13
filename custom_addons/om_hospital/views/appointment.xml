@@ -26,6 +26,7 @@
             <form string="Appointment">
                 <header>
                     <button name="action_confirm" type="object" string="Confirm" class="btn-info" states="draft"/>
+                    <button name="action_notify" type="object" string="Notify" class="btn-info" />
                     <button name="action_done" type="object" string="Done" class="btn-info"
                     attrs="{'invisible': [('state', '!=', 'confirm')]}"/>
                     <button name="delete_lines" type="object" string="Delete" class="btn-info"/>
@@ -40,6 +41,7 @@
                     <group>
                         <group>
                             <field name="patient_id"/>
+                            <field name="doctor_id"/>
                         </group>
                         <group>
                              <field name="patient_age"/>
