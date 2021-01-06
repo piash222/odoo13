@@ -11,15 +11,34 @@
             </field>
         </field>
     </record>
+
+    <record id="view_partner_form_inherit" model="ir.ui.view">
+        <field name="name">res.partner.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <field name="mobile" position="attributes">
+                <attribute name="required">1</attribute>
+            </field>
+            <field name="email" position="attributes">
+                <attribute name="readonly">1</attribute>
+            </field>
+            <field name="website" position="attributes">
+                <attribute name="attrs">{'required': [('mobile', "=", True)]}</attribute>
+            </field>
+        </field>
+    </record>
+
+
     <record id="sale.action_orders" model="ir.actions.act_window">
 
         <field name="name">Appointment</field>
     </record>
 
-<!--    <record id="sale.menu_sale_quotations" model="ir.ui.menu">-->
-<!--        <field name="name">New Quotation</field>-->
-<!--        <field name="sequence">100</field>-->
-<!--    </record>-->
+    <!--    <record id="sale.menu_sale_quotations" model="ir.ui.menu">-->
+    <!--        <field name="name">New Quotation</field>-->
+    <!--        <field name="sequence">100</field>-->
+    <!--    </record>-->
     <!-- This Menu Item Must have a parent -->
     <menuitem id="sale.menu_sale_quotations" name="new-orders" parent="sale.sale_order_menu" sequence="100"/>
 
