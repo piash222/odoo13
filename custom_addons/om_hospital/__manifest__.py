@@ -34,6 +34,7 @@
         'reports/patient_card.xml',
         'views/template.xml',
         'views/dashboard.xml',
+        'views/server_action.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [

@@ -24,8 +24,6 @@ class SaleOrderInherit(models.Model):
         super().action_confirm()
 
 
-
-
 class HospitalPatient(models.Model):
     _name = 'hospital.patient'
     _inherit = ['mail.thread', 'mail.activity.mixin']  # inherit these things for chatter purpose(footer)
@@ -137,3 +135,15 @@ class HospitalPatient(models.Model):
 
     def print_report_xls(self):
         return self.env.ref('om_hospital.report_patient_card_xls').report_action(self)
+
+    def action_patients(self):
+        print("dkjfdsfsdf")
+        return {
+            'name': _('Appointments'),
+            'domain': [],  # take all appointments(patient id) of a patient
+            'view_type': 'form',
+            'res_model': 'hospital.patient',
+            'view_id': False,
+            'view_mode': 'tree,form',
+            'type': 'ir.actions.act_window',
+        }
