@@ -81,6 +81,23 @@ class HospitalAppointment(models.Model):
     appointment_datetime = fields.Datetime(string='Date Time')
     appointment_lines = fields.One2many('hospital.appointment.lines', inverse_name='appointment_id',
                                         string="appointment_id")
+    product_id = fields.Many2one('product.template', string='Product Template')
+
+    @api.onchange('product_id')
+    def onchange_product_id(self):
+        for rec in self:
+            lines = [(5, 0, 0)]
+            # lines = []
+            print('self.product_id', self.product_id.product_variant_ids)
+            for line in self.product_id.product_variant_ids:
+                vals = {
+                    'product_id': line.id,
+                    'product_qty': 15
+                }
+                lines.append((0, 0, vals))
+            print('lines', lines)
+            rec.appointment_lines = lines
+
     partner_id = fields.Many2one(
         comodel_name='res.partner',
         string='Customer',
@@ -107,6 +124,7 @@ class HospitalAppointment(models.Model):
             print('partners', partners.mapped('name'))
             print('sorted  partners', partners.sorted(lambda o: o.create_date))
             print('filter  partners', partners.filter(lambda o: o.customer))
+
 
 class HospitalAppointmentLines(models.Model):
     _name = 'hospital.appointment.lines'
