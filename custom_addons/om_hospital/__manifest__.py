@@ -35,6 +35,7 @@
         'views/template.xml',
         'views/dashboard.xml',
         'views/server_action.xml',
+        'views/partner_view.xml',
     ],
     # data files containing optionally loaded demonstration data
     'demo': [

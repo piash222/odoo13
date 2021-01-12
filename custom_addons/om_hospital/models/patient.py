@@ -89,6 +89,7 @@ class HospitalPatient(models.Model):
     user_id = fields.Many2one('res.users', string='PRO')
     email = fields.Char(string="email")
     doctor = fields.Many2one('hospital.doctor', string="Doctor")
+    company_id = fields.Many2one('res.company', required=True, default=lambda self:self.env.user.company_id)
 
     doctor_gender = fields.Selection([
         ('male', 'Male'),
