@@ -20,6 +20,10 @@
             <field name="partner_id" positon="after">
                 <field name="patient_name"/>
             </field>
+             <button name="action_confirm" position="after">
++                <button name="test" type="object" string="Test"/>
++            </button>
+
         </field>
     </record>
 
