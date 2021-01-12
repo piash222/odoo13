@@ -93,7 +93,7 @@ class HospitalPatient(models.Model):
     doctor_gender = fields.Selection([
         ('male', 'Male'),
         ('fe_male', 'Female'),
-    ], default='male', string="Gender")
+    ], default='male', string="doctor Gender")
     gender = fields.Selection([
         ('male', 'Male'),
         ('fe_male', 'Female'),

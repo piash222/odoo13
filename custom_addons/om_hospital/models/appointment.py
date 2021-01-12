@@ -73,6 +73,7 @@ class HospitalAppointment(models.Model):
         required=False)
     patient_id = fields.Many2one('hospital.patient', string='Patient', required=True)
     doctor_id = fields.Many2one('hospital.doctor', string='Doctor', required=True)
+    doctor_ids = fields.Many2many('hospital.doctor', string='Doctors', required=True)
     patient_age = fields.Integer('Age', related='patient_id.patient_age')
     notes = fields.Text(string="Registration Note")  # using default note
     doctor_note = fields.Text(string="Doctor's Note")  # using default note
