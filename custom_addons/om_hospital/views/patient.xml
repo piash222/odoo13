@@ -44,7 +44,7 @@
         <field name="name">hospital.patient.kanban</field>
         <field name="model">hospital.patient</field>
         <field name="arch" type="xml">
-            <kanban default_group_by="doctor">
+            <kanban default_group_by="doctor"  records_draggable="false">
                 <field name="name_seq"/>
                 <field name="image"/>
                 <field name="doctor"/>
