@@ -28,13 +28,18 @@ class HospitalPatient(models.Model):
     _name = 'hospital.patient'
     _inherit = ['mail.thread', 'mail.activity.mixin']  # inherit these things for chatter purpose(footer)
     _description = 'Patient Record'
-    _rec_name = 'patient_name'
+    # _rec_name = 'patient_name'
 
     def name_get(self):
         res = []
         for field in self:
             res.append((field.id, '%s - %s' % (field.name_seq, field.patient_name)))
         return res
+    @api.model
+    def name_search(self, name='', args=None, operator='ilike', limit=100):
+        if args is None:
+            args = []
+        domain = args + ['|', ('name_seq', operator, name), ('patient_name', operator, name)]
 
     @api.constrains('patient_age')
     def check_age(self):

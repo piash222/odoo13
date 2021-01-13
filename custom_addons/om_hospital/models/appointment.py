@@ -12,7 +12,12 @@ class HospitalAppointment(models.Model):
     def action_confirm(self):  # a button name in xml file file which name is 'action_confirm'
         for rec in self:  # once the button is clicked then the state is change into 'confirm'
             # odoo search method with add condition
-            male_patients = self.env['hospital.patient'].search([('gender', '=', 'male'),('patient_age', '>=', '30')])
+            female_patients = self.env['hospital.patient'].search([]).filtered(lambda s: s.gender == 'fe_male')
+            print(female_patients)
+            mapped_patients_name = self.env['hospital.patient'].search([]).sorted(key='patient_age').mapped('patient_age')
+            print(mapped_patients_name)
+
+
 
             # odoo search method with or condition
             male_patients = self.env['hospital.patient'].search(['|', ('gender', '=', 'male'), ('patient_age', '>=', '30')])
@@ -28,11 +33,14 @@ class HospitalAppointment(models.Model):
             vals = {
                 'patient_name': "odoo erp",
             }
+            # patient = self.env['hospital.patient'].search([('id', '=', 19)])
+            # print('patient......', patient.name)
+            # print('patient......', patient.display_name)
 
-            record_to_del = self.env['hospital.patient'].browse(24)
-            # if record_to_update.exists():
-            #     record_to_update.write(vals)
-            record_to_del.unlink()
+            # record_to_del = self.env['hospital.patient'].browse(24)
+            # # if record_to_update.exists():
+            # #     record_to_update.write(vals)
+            # record_to_del.unlink()
 
 
 
